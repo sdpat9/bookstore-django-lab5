@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Контакты{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Контакты</h2>
+
+<div class="row">
+    {% for employee in employees %}
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 shadow-sm">
+                {% if employee.photo %}
+                    <img src="{{ employee.photo.url }}" class="card-img-top">
+                {% endif %}
+
+                <div class="card-body">
+                    <h5>{{ employee.full_name }}</h5>
+                    <p><b>Должность:</b> {{ employee.position }}</p>
+                    <p>{{ employee.description }}</p>
+                    <p><b>Телефон:</b> {{ employee.phone }}</p>
+                    <p><b>Email:</b> {{ employee.email }}</p>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>Сотрудники пока не добавлены.</p>
+    {% endfor %}
+</div>
+{% endblock %}

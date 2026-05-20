@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ book.title }}{% endblock %}
+
+{% block content %}
+<h2>{{ book.title }}</h2>
+
+{% if book.image %}
+    <img src="{{ book.image.url }}" width="250">
+{% endif %}
+
+<p><b>Артикул:</b> {{ book.article }}</p>
+<p><b>Описание:</b> {{ book.description }}</p>
+<p><b>Категория:</b> {{ book.category.name }}</p>
+<p><b>Изготовитель:</b> {{ book.manufacturer.name }}</p>
+<p><b>Авторы:</b>
+    {% for author in book.authors.all %}
+        {{ author.full_name }}{% if not forloop.last %}, {% endif %}
+    {% endfor %}
+</p>
+<p><b>Цена:</b> {{ book.price }}</p>
+<p><b>Количество:</b> {{ book.stock_quantity }}</p>
+<p><b>UTC:</b> {{ book.created_at_utc|date:"d/m/Y H:i" }}</p>
+<p><b>Локальное время:</b> {{ book.created_at_local|date:"d/m/Y H:i" }}</p>
+
+<h3>Внешний API: OpenLibrary</h3>
+<ul>
+    {% for item in api_books %}
+        <li>{{ item.title }} — {{ item.author }} — {{ item.first_publish_year }}</li>
+    {% empty %}
+        <li>Данные не найдены.</li>
+    {% endfor %}
+</ul>
+
+<p><a href="{% url 'book_list' %}">Назад</a></p>
+{% endblock %}

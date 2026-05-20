@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}Статистика{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Статистика книжного магазина</h2>
+
+<div class="card mb-4 shadow-sm">
+    <div class="card-body">
+        <h4>Общие показатели</h4>
+
+        <p><b>Количество книг:</b> {{ stats.count }}</p>
+        <p><b>Средняя цена:</b> {{ stats.average_price }}</p>
+        <p><b>Медиана цены:</b> {{ stats.median_price }}</p>
+        <p><b>Мода цены:</b> {{ stats.mode_price }}</p>
+    </div>
+</div>
+
+<div class="card mb-4 shadow-sm">
+    <div class="card-body">
+        <h4>Текущее время</h4>
+
+        <p><b>UTC:</b> {{ current_utc|date:"d/m/Y H:i:s" }}</p>
+        <p><b>Локальная таймзона:</b> {{ current_local|date:"d/m/Y H:i:s" }}</p>
+    </div>
+</div>
+
+<div class="card mb-4 shadow-sm">
+    <div class="card-body">
+        <h4>Текстовый календарь</h4>
+
+        <pre>{{ text_calendar }}</pre>
+    </div>
+</div>
+
+<div class="card mb-4 shadow-sm">
+    <div class="card-body">
+        <h4>Продажи по категориям</h4>
+
+        <table class="table table-bordered">
+            <tr>
+                <th>Категория</th>
+                <th>Количество продаж</th>
+                <th>Сумма продаж</th>
+            </tr>
+
+            {% for item in sales_by_category %}
+                <tr>
+                    <td>{{ item.book__category__name }}</td>
+                    <td>{{ item.total_quantity }}</td>
+                    <td>{{ item.total_sum }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">Данных пока нет.</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+<div class="card mb-4 shadow-sm">
+    <div class="card-body">
+        <h4>Диаграмма средствами Python / Matplotlib</h4>
+
+        <img src="data:image/png;base64,{{ chart }}" class="img-fluid">
+    </div>
+</div>
+{% endblock %}

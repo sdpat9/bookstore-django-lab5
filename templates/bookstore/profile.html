@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Личный кабинет{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Личный кабинет</h2>
+
+<div class="card mb-4 shadow-sm">
+    <div class="card-body">
+        <h4>Пользователь</h4>
+
+        <p><b>Логин:</b> {{ user.username }}</p>
+        <p><b>Email:</b> {{ user.email }}</p>
+
+        {% if user.profile %}
+            <p><b>Роль:</b> {{ user.profile.get_role_display }}</p>
+            <p><b>Телефон:</b> {{ user.profile.phone }}</p>
+            <p><b>Дата рождения:</b> {{ user.profile.birth_date|date:"d/m/Y" }}</p>
+        {% endif %}
+    </div>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h4>Мои заказы</h4>
+
+        <table class="table table-bordered">
+            <tr>
+                <th>№</th>
+                <th>Дата заказа</th>
+                <th>Дата доставки</th>
+                <th>Статус</th>
+                <th>Сумма</th>
+            </tr>
+
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.order_date|date:"d/m/Y H:i" }}</td>
+                    <td>{{ order.delivery_date|date:"d/m/Y" }}</td>
+                    <td>{{ order.get_status_display }}</td>
+                    <td>{{ order.total_price }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5">Заказов пока нет.</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

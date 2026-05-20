@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}О компании{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">О компании</h2>
+
+{% if company %}
+    <div class="card shadow-sm">
+        <div class="card-body">
+            {% if company.logo %}
+                <img src="{{ company.logo.url }}" width="200" class="mb-3">
+            {% endif %}
+
+            <h3>{{ company.name }}</h3>
+            <p>{{ company.description }}</p>
+            <p><b>Год основания:</b> {{ company.founded_year }}</p>
+            <p><b>Реквизиты:</b> {{ company.requisites }}</p>
+        </div>
+    </div>
+{% else %}
+    <p>Информация о компании пока не добавлена.</p>
+{% endif %}
+{% endblock %}

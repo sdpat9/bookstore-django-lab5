@@ -1,0 +1,116 @@
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+Internal Server Error: /profile/
+Traceback (most recent call last):
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/sdpat/igi/lab5/bookstore/views.py", line 240, in profile
+    return render(request, 'bookstore/profile.html', {
+        'orders': orders,
+    })
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: bookstore/profile.html
+Internal Server Error: /reviews/
+Traceback (most recent call last):
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/sdpat/igi/lab5/bookstore/views.py", line 102, in review_list
+    return render(request, 'bookstore/review_list.html', {'reviews': reviews})
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: bookstore/review_list.html
+Internal Server Error: /reviews/
+Traceback (most recent call last):
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/sdpat/igi/lab5/bookstore/views.py", line 102, in review_list
+    return render(request, 'bookstore/review_list.html', {'reviews': reviews})
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: bookstore/review_list.html
+Internal Server Error: /statistics/
+Traceback (most recent call last):
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/sdpat/igi/lab5/bookstore/views.py", line 307, in statistics_view
+    return render(request, 'bookstore/statistics.html', {
+        'stats': stats,
+    ...<4 lines>...
+        'current_local': current_local,
+    })
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: bookstore/statistics.html
+Internal Server Error: /profile/
+Traceback (most recent call last):
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/sdpat/igi/lab5/bookstore/views.py", line 240, in profile
+    return render(request, 'bookstore/profile.html', {
+        'orders': orders,
+    })
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: bookstore/profile.html
+Internal Server Error: /profile/
+Traceback (most recent call last):
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/core/handlers/base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/sdpat/igi/lab5/bookstore/views.py", line 240, in profile
+    return render(request, 'bookstore/profile.html', {
+        'orders': orders,
+    })
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/sdpat/igi/lab5/.venv/lib/python3.14/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: bookstore/profile.html
+/Users/sdpat/igi/lab5/bookstore_project/settings.py changed, reloading.
+Watching for file changes with StatReloader
+generated new fontManager
+Watching for file changes with StatReloader

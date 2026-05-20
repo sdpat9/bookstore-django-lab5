@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h2>{{ article.title }}</h2>
+
+        {% if article.image %}
+            <img src="{{ article.image.url }}" class="img-fluid mb-3">
+        {% endif %}
+
+        <p>{{ article.content }}</p>
+        <p><b>Дата публикации:</b> {{ article.published_at|date:"d/m/Y H:i" }}</p>
+
+        <a href="{% url 'news_list' %}" class="btn btn-secondary">Назад</a>
+    </div>
+</div>
+{% endblock %}

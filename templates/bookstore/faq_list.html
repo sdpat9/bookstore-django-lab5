@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Словарь терминов{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Словарь терминов и понятий</h2>
+
+{% for faq in faqs %}
+    <div class="card mb-3 shadow-sm">
+        <div class="card-body">
+            <h5>{{ faq.question }}</h5>
+            <p>{{ faq.answer }}</p>
+            <small>Добавлено: {{ faq.added_at|date:"d/m/Y" }}</small>
+        </div>
+    </div>
+{% empty %}
+    <p>Записей пока нет.</p>
+{% endfor %}
+{% endblock %}

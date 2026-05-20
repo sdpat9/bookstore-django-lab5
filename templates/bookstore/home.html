@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+
+<div class="p-5 mb-4 bg-white rounded-3 shadow-sm">
+    <div class="container-fluid py-4">
+        <h1 class="display-5 fw-bold">📚 BookStore</h1>
+
+        <p class="col-md-8 fs-4">
+            Интернет-магазин художественной, учебной и деловой литературы.
+            Удобный каталог, промокоды, отзывы покупателей и статистика продаж.
+        </p>
+
+        <a href="{% url 'book_list' %}" class="btn btn-dark btn-lg">
+            Перейти к книгам
+        </a>
+
+        <a href="{% url 'promocode_list' %}" class="btn btn-outline-dark btn-lg ms-2">
+            Смотреть промокоды
+        </a>
+    </div>
+</div>
+
+
+<div class="row mb-4">
+
+    <div class="col-md-4 mb-3">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h4>📖 Каталог книг</h4>
+                <p>
+                    Просматривайте книги, сортируйте по цене и количеству,
+                    ищите нужные товары по названию, артикулу или категории.
+                </p>
+                <a href="{% url 'book_list' %}" class="btn btn-outline-dark">
+                    Открыть каталог
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h4>⭐ Отзывы</h4>
+                <p>
+                    Зарегистрированные пользователи могут оставлять отзывы
+                    и оценивать работу книжного магазина.
+                </p>
+                <a href="{% url 'review_list' %}" class="btn btn-outline-dark">
+                    Читать отзывы
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h4>📊 Статистика</h4>
+                <p>
+                    На сайте отображаются средняя цена, медиана, мода,
+                    продажи по категориям и диаграмма Matplotlib.
+                </p>
+                <a href="{% url 'statistics' %}" class="btn btn-outline-dark">
+                    Смотреть статистику
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row">
+
+    <div class="col-md-8 mb-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+
+                <h2 class="mb-3">Последняя новость</h2>
+
+                {% if latest_news %}
+
+                    <div class="row">
+                        {% if latest_news.image %}
+                            <div class="col-md-4">
+                                <img src="{{ latest_news.image.url }}"
+                                     class="img-fluid rounded"
+                                     alt="{{ latest_news.title }}">
+                            </div>
+                        {% endif %}
+
+                        <div class="{% if latest_news.image %}col-md-8{% else %}col-md-12{% endif %}">
+                            <h3>{{ latest_news.title }}</h3>
+                            <p class="fs-5">{{ latest_news.short_description }}</p>
+
+                            <p class="text-muted">
+                                Опубликовано:
+                                {{ latest_news.published_at|date:"d/m/Y H:i" }}
+                            </p>
+
+                            <a href="{% url 'news_detail' latest_news.pk %}"
+                               class="btn btn-dark">
+                                Читать далее
+                            </a>
+                        </div>
+                    </div>
+
+                {% else %}
+
+                    <p>Новостей пока нет.</p>
+
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+
+                <h2 class="mb-3">Внешний API</h2>
+
+                <h5>Цитата дня</h5>
+
+                <blockquote class="blockquote">
+                    <p>
+                        {{ quote.content }}
+                    </p>
+                </blockquote>
+
+                <figcaption class="blockquote-footer">
+                    {{ quote.author }}
+                </figcaption>
+
+                <hr>
+
+                <p class="text-muted">
+                    Данные получены через сторонний API.
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+        <h2 class="mb-3">Что реализовано в проекте</h2>
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <ul>
+                    <li>Модели предметной области книжного магазина</li>
+                    <li>Связи OneToOne, ForeignKey, ManyToMany</li>
+                    <li>Регистрация и авторизация пользователей</li>
+                    <li>CRUD-операции через Function-Based Views</li>
+                    <li>Отзывы пользователей</li>
+                </ul>
+            </div>
+
+            <div class="col-md-6">
+                <ul>
+                    <li>Поиск и сортировка книг</li>
+                    <li>Внешние API</li>
+                    <li>Статистика и диаграмма Matplotlib</li>
+                    <li>Текстовый календарь</li>
+                    <li>UTC и локальная таймзона</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

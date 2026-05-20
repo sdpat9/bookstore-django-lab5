@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}Книги{% endblock %}
+
+{% block content %}
+<h2>Книги</h2>
+
+<form method="get">
+    <input type="text" name="q" value="{{ query }}" placeholder="Поиск">
+
+    <select name="sort">
+        <option value="title">Название А-Я</option>
+        <option value="-title">Название Я-А</option>
+        <option value="price">Цена ↑</option>
+        <option value="-price">Цена ↓</option>
+        <option value="stock_quantity">Количество ↑</option>
+        <option value="-stock_quantity">Количество ↓</option>
+    </select>
+
+    <button type="submit">Применить</button>
+</form>
+
+{% if user.is_authenticated %}
+    <p><a href="{% url 'book_create' %}">Добавить книгу</a></p>
+{% endif %}
+
+<table border="1" cellpadding="6">
+    <tr>
+        <th>Фото</th>
+        <th>Название</th>
+        <th>Артикул</th>
+        <th>Категория</th>
+        <th>Изготовитель</th>
+        <th>Цена</th>
+        <th>Количество</th>
+        <th>Действия</th>
+    </tr>
+
+    {% for book in books %}
+    <tr>
+        <td>
+            {% if book.image %}
+                <img src="{{ book.image.url }}" width="80">
+            {% endif %}
+        </td>
+        <td>{{ book.title }}</td>
+        <td>{{ book.article }}</td>
+        <td>{{ book.category.name }}</td>
+        <td>{{ book.manufacturer.name }}</td>
+        <td>{{ book.price }}</td>
+        <td>{{ book.stock_quantity }}</td>
+        <td>
+            <a href="{% url 'book_detail' book.pk %}">Подробнее</a>
+            {% if user.is_authenticated %}
+                | <a href="{% url 'book_update' book.pk %}">Изменить</a>
+                | <a href="{% url 'book_delete' book.pk %}">Удалить</a>
+            {% endif %}
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="8">Книг пока нет.</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

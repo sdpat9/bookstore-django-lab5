@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Отзывы{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Отзывы</h2>
+
+{% if user.is_authenticated %}
+    <a href="{% url 'review_create' %}" class="btn btn-success mb-3">
+        Добавить отзыв
+    </a>
+{% else %}
+    <p>
+        Чтобы оставить отзыв, нужно
+        <a href="{% url 'login' %}">войти</a>.
+    </p>
+{% endif %}
+
+{% for review in reviews %}
+    <div class="card mb-3 shadow-sm">
+        <div class="card-body">
+            <h5>{{ review.name }}</h5>
+            <p><b>Оценка:</b> {{ review.rating }}/5</p>
+            <p>{{ review.text }}</p>
+            <small>{{ review.created_at|date:"d/m/Y H:i" }}</small>
+        </div>
+    </div>
+{% empty %}
+    <p>Отзывов пока нет.</p>
+{% endfor %}
+{% endblock %}
