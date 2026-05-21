@@ -114,3 +114,7 @@ django.template.exceptions.TemplateDoesNotExist: bookstore/profile.html
 Watching for file changes with StatReloader
 generated new fontManager
 Watching for file changes with StatReloader
+generated new fontManager
+Watching for file changes with StatReloader
+/Users/sdpat/igi/lab5/bookstore_project/settings.py changed, reloading.
+/app/bookstore_project/settings.py changed, reloading.

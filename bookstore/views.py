@@ -1,8 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.contrib.auth.models import User
-from django.db.models import Q, Sum, Count, F
+from django.db.models import Q, Sum, F
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 
@@ -289,9 +288,9 @@ def order_create(request):
 
 
 @login_required
-@user_passes_test(is_employee_or_admin)
 def statistics_view(request):
     stats = get_book_statistics()
+
     sales_by_category = OrderItem.objects.values(
         'book__category__name'
     ).annotate(
@@ -301,8 +300,10 @@ def statistics_view(request):
 
     chart = build_sales_chart_base64()
     text_calendar = get_text_calendar()
+
     current_utc = timezone.now()
     current_local = timezone.localtime(current_utc)
+    current_timezone = timezone.get_current_timezone_name()
 
     return render(request, 'bookstore/statistics.html', {
         'stats': stats,
@@ -311,4 +312,5 @@ def statistics_view(request):
         'text_calendar': text_calendar,
         'current_utc': current_utc,
         'current_local': current_local,
+        'current_timezone': current_timezone,
     })

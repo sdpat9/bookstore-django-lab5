@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, re_path
 
 from . import views
 
@@ -8,7 +8,8 @@ urlpatterns = [
 
     path('about/', views.about, name='about'),
     path('news/', views.news_list, name='news_list'),
-    path('news/<int:pk>/', views.news_detail, name='news_detail'),
+    re_path(r'^news/(?P<pk>\d+)/$', views.news_detail, name='news_detail'),
+
     path('faq/', views.faq_list, name='faq_list'),
     path('contacts/', views.contacts, name='contacts'),
     path('privacy/', views.privacy_policy, name='privacy_policy'),
@@ -23,9 +24,10 @@ urlpatterns = [
 
     path('books/', views.book_list, name='book_list'),
     path('books/create/', views.book_create, name='book_create'),
-    path('books/<int:pk>/', views.book_detail, name='book_detail'),
-    path('books/<int:pk>/update/', views.book_update, name='book_update'),
-    path('books/<int:pk>/delete/', views.book_delete, name='book_delete'),
+
+    re_path(r'^books/(?P<pk>\d+)/$', views.book_detail, name='book_detail'),
+    re_path(r'^books/(?P<pk>\d+)/update/$', views.book_update, name='book_update'),
+    re_path(r'^books/(?P<pk>\d+)/delete/$', views.book_delete, name='book_delete'),
 
     path('customers/', views.customer_list, name='customer_list'),
     path('customers/create/', views.customer_create, name='customer_create'),
